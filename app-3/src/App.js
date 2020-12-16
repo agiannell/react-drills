@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
+import {Component} from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor(){
+    super();
+    this.state = {
+      nflTeams: ['49ers', 'bears', 'bengals', 'bills', 'broncos', 'browns', 'buccaneers', 'cardinals', 'chargers', 'chiefs', 'colts', 'cowboys', 'dolphins', 'eagles', 'falcons', 'giants', 'jaguars', 'jets', 'lions', 'packers', 'panthers', 'patriots', 'raiders', 'rams', 'ravens', 'saints', 'seahawks', 'steelers', 'texans', 'titans', 'vikings', 'washington football team'],
+      userInput: ''
+    }
+  }
+
+  handleInput(e){
+    this.setState({
+      userInput: e.target.value
+    })
+  }
+
+  
+  render(){
+    let nflTeams = this.state.nflTeams
+      .filter(e => e.includes(this.state.userInput))
+      .map((e, i) => <h3 key={i}>{e}</h3>)
+    return(
+      <section className="App">
+        <input onChange={e => this.handleInput(e)} type="text" />
+        {nflTeams}
+      </section>
+    );
+  }
 }
 
 export default App;
