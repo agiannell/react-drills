@@ -1,6 +1,6 @@
 const Todo = props => {
     return (
-        <h3>props.todo</h3>
+        <h3>{props.todo}</h3>
     )
 }
 

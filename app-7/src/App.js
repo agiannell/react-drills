@@ -9,6 +9,7 @@ class App extends Component {
     this.state = {
       todoArr: [],
     }
+    this.handleAddTask = this.handleAddTask.bind(this);
   }
 
   handleAddTask(task) {
